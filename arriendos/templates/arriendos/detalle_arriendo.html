@@ -1,0 +1,44 @@
+{% extends 'arriendos/base.html' %}
+{% block title %}Detalle del Arriendo{% endblock %}
+
+{% block content %}
+<h2>Detalle del Arriendo</h2>
+<ul class="list-group mb-3">
+    <li class="list-group-item"><strong>Nombre:</strong> {{ arriendo.nombre }}</li>
+    <li class="list-group-item"><strong>Capital:</strong> {{ arriendo.capital }}</li>
+    <li class="list-group-item"><strong>Fecha:</strong> {{ arriendo.fecha }}</li>
+    <li class="list-group-item"><strong>Estado:</strong> {{ arriendo.estado }}</li>
+</ul>
+
+<h3>Pagos Realizados</h3>
+<a href="{% url 'registrar_pago' arriendo.id %}" class="btn btn-primary mb-2">+ Registrar Pago</a>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Fecha</th>
+            <th>Año</th>
+            <th>Mes</th>
+            <th>Tipo de Pago</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for pago in pagos %}
+        <tr>
+            <td>{{ pago.fecha }}</td>
+            <td>{{ pago.ano }}</td>
+            <td>{{ pago.mes }}</td>
+            <td>{{ pago.tipo_pago }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4" class="text-center">No hay pagos registrados</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="{% url 'lista_arriendos' %}" class="btn btn-secondary">Volver</a>
+<a href="{% url 'exportar_arriendo_pdf' arriendo.id %}" class="btn btn-sm btn-outline-danger">Exportar PDF</a>
+<a href="{% url 'exportar_arriendo_excel' arriendo.id %}" class="btn btn-sm btn-outline-success">Exportar Excel</a>
+
+{% endblock %}

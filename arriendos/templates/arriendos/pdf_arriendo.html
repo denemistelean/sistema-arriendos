@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: DejaVu Sans; font-size: 12px; }
+        table, th, td { border: 1px solid black; border-collapse: collapse; padding: 5px; }
+    </style>
+</head>
+<body>
+    <h2>Arriendo: {{ arriendo.nombre }}</h2>
+    <p><strong>Capital:</strong> {{ arriendo.capital }}</p>
+    <p><strong>Fecha:</strong> {{ arriendo.fecha }}</p>
+
+    <h3>Pagos</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Año</th>
+                <th>Mes</th>
+                <th>Tipo</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for pago in pagos %}
+            <tr>
+                <td>{{ pago.fecha }}</td>
+                <td>{{ pago.ano }}</td>
+                <td>{{ pago.mes }}</td>
+                <td>{{ pago.tipo_pago }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
