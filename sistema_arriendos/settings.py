@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-5^13sspyvs2qjjbt^cb0ieu(e$dfj8kbrcikjytgj@rhienw&t
 DEBUG = True
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['sistema-arriendos.onrender.com']
 
 #PARA EL LOGIN Y REGISTRO
 LOGIN_URL = 'login'
